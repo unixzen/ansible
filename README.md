@@ -1,15 +1,15 @@
 # ansible
-Плейбук для установки Nginx, Apache, PHP, MySQL, Joomla
+## Плейбук для установки Nginx, Apache, PHP, MySQL, Joomla
 
 
-h3. Описание
+### Описание
 В качестве провайдера для вагрант используется digital ocean (https://digitalocean.com). 
 При запуске устанавливается на локальную машину плагин для digital ocean, вагрант, поднимается
 виртуалка в digital ocean и устанавливается стек Nginx, Apache, PHP, MySQL, Joomla
 
 
 
-h3. Использование
+### Использование
 Для корректного запуска нужно иметь API Digital Ocean token (пример, https://www.digitalocean.com/community/tutorials/how-to-use-the-digitalocean-api-v2)
 
 Из каталога с Vagrantfile выполнить
