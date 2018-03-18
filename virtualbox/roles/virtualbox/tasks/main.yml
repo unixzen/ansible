@@ -1,0 +1,45 @@
+- name: Download and add apt key for virtualbox
+  apt_key:
+    url: https://www.virtualbox.org/download/oracle_vbox_2016.asc
+    state: present
+
+- name: Add apt repo
+  apt_repository:
+    repo: 'deb https://download.virtualbox.org/virtualbox/debian xenial contrib'
+    state: present
+
+- name: Install Virtualbox
+  apt:
+    name: virtualbox-5.2
+    update_cache: yes
+    state: present
+
+- name: Install X
+  apt:
+    name: "{{ item }}"
+    update_cache: yes
+    state: present
+  with_items:
+    - xubuntu-desktop
+    - tightvncserver
+    - expect
+    - gcc
+    - linux-headers-4.4.0-109-generic
+    - make
+    - firefox
+
+- name: Copy script to tmp
+  copy:
+    src: files/set_vnc_pass.sh
+    dest: /tmp/set_vnc_pass.sh
+    mode: 755
+
+- name: Set password for vnc
+  shell: "/tmp/set_vnc_pass.sh"
+
+- name: Start vncserver
+  shell: "vncserver :1"
+
+- name: Configuration Virtualbox
+  shell: "/sbin/vboxconfig"
+
