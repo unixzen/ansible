@@ -1,0 +1,14 @@
+---
+
+- name: Include task dor Debian/Ubuntu
+  include_tasks: debian.yml
+  when: ansible_os_family == 'Debian'
+
+- name: Include task dor RedHat
+  include_tasks: redhat.yml
+  when: ansible_os_family == 'RedHat' and ansible_facts['distribution'] == "RedHat"
+
+- include_tasks: docker.yml
+- include_tasks: docker-compose.yml
+
+#- debug: var=ansible_facts

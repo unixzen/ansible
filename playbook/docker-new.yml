@@ -1,0 +1,12 @@
+---
+- name: Basic node configuration
+  hosts: all
+  become: yes
+  #  pre_tasks:
+  #  - name: Install python
+  #    shell: apt install python-apt -y
+    #- name: Install python
+    #  apt: name=python state=present
+  roles:
+      - roles/docker-new
+

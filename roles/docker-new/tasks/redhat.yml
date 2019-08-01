@@ -1,0 +1,11 @@
+---
+
+- name: Add yum repo
+  yum_repository:
+    name: docker
+    discription: Docker repo
+    baseurl: 'https://download.docker.com/linux/centos/docker-ce.repo'
+    state: present
+  tags:
+    - docker
+    - docker-repo

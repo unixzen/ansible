@@ -1,0 +1,27 @@
+---
+
+- name: Get Docker apt key
+  get_url:
+    url: https://download.docker.com/linux/{{ansible_facts['distribution'].lower()}}/gpg
+    dest: /tmp/docker.gpg
+  tags:
+    - docker
+    - docker-gpg-key
+    - docker-get-gpg-key
+
+- name: Add Docker apt key
+  apt_key:
+    file: /tmp/docker.gpg
+    state: present
+  tags:
+    - docker
+    - docker-gpg-key
+    - docker-add-gpg-key
+
+- name: Add apt repo
+  apt_repository:
+    repo: "deb [arch=amd64] https://download.docker.com/linux/{{ansible_facts['distribution'].lower()}} {{ansible_facts['distribution_release']}} stable"
+    state: present
+  tags:
+    - docker
+    - docker-repo

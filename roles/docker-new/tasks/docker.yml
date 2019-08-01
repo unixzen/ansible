@@ -1,0 +1,17 @@
+---
+
+- name: Create docker directory for systemd
+  file: path={{ item }} state=directory owner=root group=root mode=755
+  with_items:
+    - /etc/systemd/system/docker.service.d
+
+- name: Install docker packages
+  apt:
+    state: latest
+    update_cache: yes
+    cache_valid_time: 0
+    pkg:
+      - docker-ce
+  tags:
+    - docker
+    - docker-install

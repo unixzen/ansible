@@ -1,0 +1,36 @@
+---
+
+- name: Add docker-compose bin
+  get_url:
+    url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-x86_64
+    dest: /usr/local/bin/docker-compose
+    mode: 0755
+  tags:
+    - docker
+    - docker-compose
+    - docker-compose-bin
+    - docker-compose-bin-download
+
+#- name: Add docker-compose exec
+#  file:
+#    path: /usr/local/bin/docker-compose
+#    state: touch
+#    mode: 0755
+#    modification_time: "preserve"
+#    access_time: "preserve"
+#  tags:
+#    - docker
+#    - docker-compose
+#    - docker-compose-bin
+#    - docker-compose-mode
+
+- name: Create docker-compose link
+  file:
+    src: /usr/local/bin/docker-compose
+    dest: /usr/bin/docker-compose
+    state: link
+  tags:
+    - docker
+    - docker-compose
+    - docker-compose-bin
+    - docker-compose-link
