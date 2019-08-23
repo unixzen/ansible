@@ -1,9 +1,0 @@
----
-- hosts: all
-  roles:
-    - mysql
-    - nginx
-    - apache
-    - php
-    - joomla
-                          
