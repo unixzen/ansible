@@ -1,0 +1,14 @@
+- name: ferm-start
+  systemd:
+    name=ferm
+    state=started
+    enabled=yes
+  become: yes
+
+- name: ferm-restart
+  systemd:
+    name=ferm
+    state=restarted
+    enabled=yes
+  become: yes
+
